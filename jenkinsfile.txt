@@ -9,7 +9,7 @@ pipeline
                     steps {  
                         withMaven(jdk: 'JDK_HOME', maven: 'MAVEN_HOME') 
                         
-                        { sh 'mvn compile'}
+                        { sh 'mvn package'}
                 }}
 
         }
