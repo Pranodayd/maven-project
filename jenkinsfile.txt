@@ -9,8 +9,20 @@ pipeline
                     steps {  
                         withMaven(jdk: 'JDK_HOME', maven: 'MAVEN_HOME') 
                         
-                        { sh 'mvn package'}
+                        { sh 'mvn compile'}
                 }}
+        stage('Dev Deployment')
+        {
+
+                sshagent(['TomcatSSH']) 
+                {
+                    sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.31.114:/var/lib/tomcat/webapps/'
+
+                }
 
         }
     }
+}
+
+
+
