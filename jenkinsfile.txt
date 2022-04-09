@@ -1,0 +1,16 @@
+pipeline
+{
+    agent any
+    stages
+    {
+            
+        stage ('code compile' )
+                {
+                    steps {  
+                        withMaven(jdk: 'JDK_HOME', maven: 'MAVEN_HOME') 
+                        
+                        { sh 'mvn compile'}
+                }}
+
+        }
+    }
